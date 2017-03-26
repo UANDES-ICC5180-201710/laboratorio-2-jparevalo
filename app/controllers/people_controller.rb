@@ -16,6 +16,7 @@ class PeopleController < ApplicationController
 
   # GET /people/new
   def new
+    #@person = Person.new_person(params[:student_id])
     @person = Person.new
   end
 

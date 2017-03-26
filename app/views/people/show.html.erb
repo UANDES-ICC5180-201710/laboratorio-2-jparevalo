@@ -28,9 +28,11 @@
 </table>
 <h2>Assign new Course:</h2>
 
-
-
-
+<%= form_tag new_student_path, :method => 'get' do %>
+    <%= select("Student",:course_id, Course.all.map{|c| c.title}.zip(1..Course.all.count), {:include_blank => true})%>
+    <%= hidden_field_tag :student_id , @person.id %>
+    <%= submit_tag "Assign", :name => nil %>
+<% end %>
 
 <br>
 <br>

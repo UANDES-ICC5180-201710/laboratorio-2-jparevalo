@@ -25,5 +25,13 @@
     </tbody>
 </table>
 <br>
+<h2>Assign new Student:</h2>
+
+<%= form_tag new_student_path, :method => 'get' do %>
+    <%= select("Student",:student_id, Person.all.map{|c| c.first_name + " " + c.last_name}.zip(1..Person.all.count), {:include_blank => true})%>
+    <%= hidden_field_tag :course_id , @course.id %>
+    <%= submit_tag "Assign", :name => nil %>
+<% end %>
+<br>
 <%= link_to 'Edit', edit_course_path(@course) %> |
 <%= link_to 'Back', courses_path %>

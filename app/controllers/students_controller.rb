@@ -14,7 +14,11 @@ class StudentsController < ApplicationController
 
   # GET /students/new
   def new
-    @student = Student.new
+    if params["Student"][:course_id]
+        @student = Student.import_student(params["Student"][:course_id],params[:student_id])
+    else
+        @student = Student.import_student(params[:course_id],params["Student"][:student_id])
+    end
   end
 
   # GET /students/1/edit
